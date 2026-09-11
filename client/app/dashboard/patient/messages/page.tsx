@@ -75,7 +75,7 @@ const MedicalChatbotPage = () => {
   const inputRef = useRef<HTMLInputElement>(null)
 
   // API Configuration
-  const API_BASE_URL = "http://localhost:5002"
+  const API_BASE_URL = process.env.NEXT_PUBLIC_BOT_API_URL || "http://localhost:5002"
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })

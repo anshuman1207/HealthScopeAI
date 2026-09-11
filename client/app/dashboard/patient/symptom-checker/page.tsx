@@ -213,7 +213,8 @@ export default function SymptomChecker() {
         duration: answers.duration || "1-3 days",
         pain_level: answers.pain_level || "No pain (0/10)",
         additional_symptoms: answers.additional_symptoms || [],
-        medication: answers.medication || "No medications"
+        medication: answers.medication || "No medications",
+        medications: answers.medication || "No medications"
       }
 
       console.log('Sending payload:', payload)

@@ -28,6 +28,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true)
   const router = useRouter()
   const { toast } = useToast()
+  const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
 
   useEffect(() => {
     const checkSession = async () => {
@@ -35,7 +36,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (token) {
             try {
                 // Make a GET request to your backend's endpoint to validate the token
-                const userResponse = await axios.get('http://localhost:5000/api/auth/me', {
+                const userResponse = await axios.get(`${API_BASE}/api/auth/me`, {
                     headers: { 'x-auth-token': token },
                 });
                 
@@ -59,7 +60,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signIn = async (email: string, password: string) => {
   try {
-    const response = await axios.post('http://localhost:5000/api/auth/login', {
+    const response = await axios.post(`${API_BASE}/api/auth/login`, {
       email,
       password,
     });
@@ -68,7 +69,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     localStorage.setItem('x-auth-token', token); // Store the token
     
     // You'll need to fetch user data with the token
-    const userResponse = await axios.get('http://localhost:5000/api/auth/me', {
+    const userResponse = await axios.get(`${API_BASE}/api/auth/me`, {
       headers: { 'x-auth-token': token },
     });
     
@@ -95,7 +96,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signUp = async (email: string, password: string, role: string, name: string) => {
   try {
-    const response = await axios.post('http://localhost:5000/api/auth/register', {
+    const response = await axios.post(`${API_BASE}/api/auth/register`, {
       email,
       password,
       role,
@@ -106,7 +107,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     localStorage.setItem('x-auth-token', token);
 
     // Fetch user data after successful registration
-    const userResponse = await axios.get('http://localhost:5000/api/auth/me', {
+    const userResponse = await axios.get(`${API_BASE}/api/auth/me`, {
       headers: { 'x-auth-token': token },
     });
     

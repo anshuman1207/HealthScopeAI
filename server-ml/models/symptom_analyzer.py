@@ -6,7 +6,10 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, accuracy_score
-from sentence_transformers import SentenceTransformer
+try:
+    from sentence_transformers import SentenceTransformer
+except ImportError:
+    SentenceTransformer = None
 import pickle
 import joblib
 import json

@@ -1,0 +1,24 @@
+{
+  "name": "healthscope-workspace",
+  "version": "1.0.0",
+  "description": "HealthScope AI - Full-Stack Healthcare Management & AI Diagnosis Platform",
+  "scripts": {
+    "install:all": "npm install --prefix client && npm install --prefix server-main",
+    "dev:client": "npm run dev --prefix client",
+    "dev:server": "npm run start --prefix server-main",
+    "dev:ml": "python server-ml/main.py",
+    "dev:bot": "python server-ml/models/bot.py",
+    "build:client": "npm run build --prefix client"
+  },
+  "keywords": [
+    "healthscope",
+    "healthcare",
+    "ai",
+    "symptom-checker",
+    "nextjs",
+    "express",
+    "fastapi"
+  ],
+  "author": "",
+  "license": "ISC"
+}
